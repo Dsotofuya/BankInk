@@ -1,0 +1,179 @@
+<svg viewBox="0 0 1200 850" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions -->
+  <defs>
+    <style>
+      .table-box { fill: #ffffff; stroke: #2c3e50; stroke-width: 2; }
+      .table-header { fill: #3498db; }
+      .table-title { fill: #ffffff; font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; }
+      .field-text { fill: #2c3e50; font-family: 'Courier New', monospace; font-size: 13px; }
+      .pk-icon { fill: #f39c12; }
+      .fk-icon { fill: #e74c3c; }
+      .relation-line { stroke: #7f8c8d; stroke-width: 2; fill: none; }
+      .relation-label { fill: #7f8c8d; font-family: Arial, sans-serif; font-size: 12px; }
+      .comment { fill: #95a5a6; font-family: Arial, sans-serif; font-size: 11px; font-style: italic; }
+    </style>
+    
+    <!-- Marker for relationship arrows -->
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#7f8c8d" />
+    </marker>
+    
+    <marker id="crowfoot" markerWidth="20" markerHeight="20" refX="0" refY="10" orient="auto">
+      <path d="M0,10 L10,5 M0,10 L10,15 M10,10 L20,10" stroke="#7f8c8d" stroke-width="2" fill="none"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" style="font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #2c3e50;">
+    Diagrama de Base de Datos - Sistema de Tarjetas
+  </text>
+
+  <!-- PRODUCTOS Table -->
+  <g id="productos">
+    <rect class="table-box" x="50" y="80" width="320" height="240" rx="5"/>
+    <rect class="table-header" x="50" y="80" width="320" height="40" rx="5"/>
+    <text class="table-title" x="210" y="105" text-anchor="middle">PRODUCTOS</text>
+    
+    <!-- Fields -->
+    <text class="field-text" x="60" y="145">
+      <tspan class="pk-icon">🔑</tspan> ID_PRODUCTO (SERIAL, PK)
+    </text>
+    <text class="field-text" x="60" y="170">PRIMER_NOMBRE (VARCHAR(32))</text>
+    <text class="field-text" x="60" y="195">SEGUNDO_NOMBRE (VARCHAR(32))</text>
+    <text class="field-text" x="60" y="220">PRIMER_APELLIDO (VARCHAR(32))</text>
+    <text class="field-text" x="60" y="245">SEGUNDO_APELLIDO (VARCHAR(32))</text>
+    
+    <!-- Comment -->
+    <text class="comment" x="60" y="280">Productos bancarios con información</text>
+    <text class="comment" x="60" y="295">del propietario</text>
+  </g>
+
+  <!-- TARJETAS Table -->
+  <g id="tarjetas">
+    <rect class="table-box" x="450" y="80" width="350" height="320" rx="5"/>
+    <rect class="table-header" x="450" y="80" width="350" height="40" rx="5"/>
+    <text class="table-title" x="625" y="105" text-anchor="middle">TARJETAS</text>
+    
+    <!-- Fields -->
+    <text class="field-text" x="460" y="145">
+      <tspan class="pk-icon">🔑</tspan> ID_TARJETA (SERIAL, PK)
+    </text>
+    <text class="field-text" x="460" y="170">
+      <tspan style="fill: #27ae60;">🔒</tspan> NRO_TARJETA (VARCHAR(16), UNIQUE)
+    </text>
+    <text class="field-text" x="460" y="195">NOMBRE_TITULAR (VARCHAR(128))</text>
+    <text class="field-text" x="460" y="220">FECHA_VENCIMIENTO_TARJETA (DATE)</text>
+    <text class="field-text" x="460" y="245">ESTADO_TARJETA (CHAR) [A/I/B]</text>
+    <text class="field-text" x="460" y="270">DIVISA_TARJETA (VARCHAR(3))</text>
+    <text class="field-text" x="460" y="295">BALANCE_TARJETA (BIGINT)</text>
+    
+    <!-- Comment -->
+    <text class="comment" x="460" y="335">Tarjetas débito/crédito</text>
+    <text class="comment" x="460" y="350">Balance en centavos de USD</text>
+    <text class="comment" x="460" y="365">Estados: A=Activa, I=Inactiva, B=Bloqueada</text>
+  </g>
+
+  <!-- TRANSACCIONES Table -->
+  <g id="transacciones">
+    <rect class="table-box" x="850" y="80" width="320" height="320" rx="5"/>
+    <rect class="table-header" x="850" y="80" width="320" height="40" rx="5"/>
+    <text class="table-title" x="1010" y="105" text-anchor="middle">TRANSACCIONES</text>
+    
+    <!-- Fields -->
+    <text class="field-text" x="860" y="145">
+      <tspan class="pk-icon">🔑</tspan> ID_TRANSACCION (SERIAL, PK)
+    </text>
+    <text class="field-text" x="860" y="170">
+      <tspan class="fk-icon">🔗</tspan> NRO_TARJETA_TRANSACCION
+    </text>
+    <text class="field-text" x="880" y="185">(VARCHAR(16), FK)</text>
+    <text class="field-text" x="860" y="210">MONTO_TRANSACCION (BIGINT)</text>
+    <text class="field-text" x="860" y="235">FECHA_TRANSACCION (TIMESTAMP)</text>
+    <text class="field-text" x="860" y="260">DIVISA_TRANSACCION (VARCHAR(3))</text>
+    <text class="field-text" x="860" y="285">ESTADO_TRANSACCION (CHAR) [E/A]</text>
+    
+    <!-- Comment -->
+    <text class="comment" x="860" y="325">Historial de transacciones</text>
+    <text class="comment" x="860" y="340">Monto en centavos</text>
+    <text class="comment" x="860" y="355">Estados: E=Exitosa, A=Anulada</text>
+  </g>
+
+  <!-- Relationships -->
+  <!-- TARJETAS to TRANSACCIONES -->
+  <path class="relation-line" d="M 800 170 L 850 170" marker-end="url(#arrow)"/>
+  <path class="relation-line" d="M 800 170 L 815 160 M 800 170 L 815 180" stroke="#7f8c8d" stroke-width="2"/>
+  <text class="relation-label" x="810" y="155" text-anchor="middle">1</text>
+  <text class="relation-label" x="835" y="155" text-anchor="middle">N</text>
+  <text class="relation-label" x="825" y="195" text-anchor="middle">realiza</text>
+
+  <!-- Legend -->
+  <g id="legend">
+    <rect x="50" y="450" width="300" height="320" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="5"/>
+    <text x="200" y="475" text-anchor="middle" style="font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #2c3e50;">
+      Leyenda
+    </text>
+    
+    <text class="field-text" x="60" y="505">
+      <tspan class="pk-icon">🔑</tspan> Primary Key (PK)
+    </text>
+    <text class="field-text" x="60" y="530">
+      <tspan class="fk-icon">🔗</tspan> Foreign Key (FK)
+    </text>
+    <text class="field-text" x="60" y="555">
+      <tspan style="fill: #27ae60;">🔒</tspan> Unique Constraint
+    </text>
+    
+    <line x1="60" y1="580" x2="120" y2="580" stroke="#7f8c8d" stroke-width="2"/>
+    <text class="field-text" x="130" y="585">Relación 1:N</text>
+    
+    <text class="comment" x="60" y="615" style="font-size: 12px; font-style: normal; fill: #2c3e50; font-weight: bold;">
+      Estados de Tarjeta:
+    </text>
+    <text class="comment" x="60" y="635" style="font-size: 11px;">
+      • A = Activa (operativa)
+    </text>
+    <text class="comment" x="60" y="655" style="font-size: 11px;">
+      • I = Inactiva (temporalmente)
+    </text>
+    <text class="comment" x="60" y="675" style="font-size: 11px;">
+      • B = Bloqueada (seguridad)
+    </text>
+    
+    <text class="comment" x="60" y="705" style="font-size: 12px; font-style: normal; fill: #2c3e50; font-weight: bold;">
+      Estados de Transacción:
+    </text>
+    <text class="comment" x="60" y="725" style="font-size: 11px;">
+      • E = Exitosa (completada)
+    </text>
+    <text class="comment" x="60" y="745" style="font-size: 11px;">
+      • A = Anulada (reversada)
+    </text>
+  </g>
+
+  <!-- Notes -->
+  <g id="notes">
+    <rect x="400" y="450" width="770" height="320" fill="#fff3cd" stroke="#ffc107" stroke-width="2" rx="5"/>
+    <text x="785" y="475" text-anchor="middle" style="font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #856404;">
+      Notas Importantes del Esquema
+    </text>
+    
+    <text x="410" y="505" style="font-family: Arial, sans-serif; font-size: 13px; fill: #856404;">
+      <tspan x="410" dy="0">💰 <tspan font-weight="bold">Manejo de Dinero:</tspan></tspan>
+      <tspan x="425" dy="20">• BALANCE_TARJETA y MONTO_TRANSACCION usan BIGINT</tspan>
+      <tspan x="425" dy="18">• Se almacenan valores en CENTAVOS (USD * 100)</tspan>
+      <tspan x="425" dy="18">• Ejemplo: $150.50 se guarda como 15050</tspan>
+      <tspan x="425" dy="18">• Rango: ±92,233,720,368,547,758.07 USD</tspan>
+      
+      <tspan x="410" dy="35">🔐 <tspan font-weight="bold">Integridad Referencial:</tspan></tspan>
+      <tspan x="425" dy="20">• NRO_TARJETA es UNIQUE en TARJETAS (VARCHAR(16))</tspan>
+      <tspan x="425" dy="18">• TRANSACCIONES referencia NRO_TARJETA (no ID_TARJETA)</tspan>
+      <tspan x="425" dy="18">• Foreign Key: transacciones_nro_tarjeta_transaccion_fkey</tspan>
+      
+      <tspan x="410" dy="35">✓ <tspan font-weight="bold">Características Importantes:</tspan></tspan>
+      <tspan x="425" dy="20">• ESTADO_TRANSACCION: Control de transacciones exitosas/anuladas</tspan>
+      <tspan x="425" dy="18">• ID_PRODUCTO inicia en 100000 (setval)</tspan>
+      <tspan x="425" dy="18">• Timestamps automáticos con NOW()</tspan>
+      <tspan x="425" dy="18">• Divisa por defecto: USD</tspan>
+    </text>
+  </g>
+</svg>
