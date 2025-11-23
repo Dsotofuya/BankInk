@@ -80,5 +80,5 @@ Una vez arriba los contenedores de backend y la db es posible probar los servici
 
 # Cómo probar el despliegue en nube
 
-Es posible probar los servicios del API rest mediante postman del servicio en nube mediante el host y puerto 8080
+Es posible probar los servicios del API rest mediante postman del servicio en nube mediante la url https://bankink-ms-latest.onrender.com
 
