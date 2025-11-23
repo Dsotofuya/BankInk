@@ -20,6 +20,7 @@ Cada vez que se requiera una nueva tarjeta el banco debe realizar un proceso de 
 
 Una vez Bank Inc haga su proceso de emisión, la tarjeta estará disponible para
 realizar compras teniendo en cuenta que:
+
     • Se debe contar con el saldo suficiente para realizar la compra (el saldo disponible no debe ser menos a cero).
     • Debe estar vigente, es decir, la fecha de la transacción no debe ser mayor a la fecha de vencimiento.
     • La tarjeta debió ser activada en el proceso de emisión
