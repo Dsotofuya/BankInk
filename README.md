@@ -29,6 +29,10 @@ Al realizar una transacción de compra, el sistema asignará un identificador co
 cual es posible consultar la transacción o realizar la anulación.
 
 
+## Diagrama DB propuesto 
+
+(![Diagrama DB](db_diagram_tarjetas-1.svg))
+
 ## Endpoints disponibles
 A continuación se listan los endpoints disponibles, para mas información acerca de los mismos revisar la documentación del proyecto, disponible en swagger al ejecutarlo o al consumirlo en nube.
 
