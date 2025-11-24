@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: tarjetas
+  profiles:
+    active: dev

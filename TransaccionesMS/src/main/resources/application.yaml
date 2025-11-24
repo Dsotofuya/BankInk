@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: transacciones
+  profiles:
+    active: dev

@@ -54,10 +54,10 @@ A continuación se listan los endpoints disponibles, para mas información acerc
 
 ## 2. Ejecutar el archivo Dockerfile
 
-Se debe ejecutar el comando __docker build -t bankink-ms:1.0.0 .__ para crear la imagen contenedor para el backend
+Se debe entrar a la carpeta TarjetasMS ejecutar el comando __docker build -t tarjetas-ms:1.0.0 .__ para crear la imagen contenedor de tarjetas, luego se debe entrar a la carpeta TransaccionesMS y ejecutar el comando __docker build -t transacciones-ms-ms:1.0.0 .__ para construir la imagen de transacciones
 
 ## 3. Ejecutar docker compose
-Una vez generada la imagen bankink-ms:1.0.0 se debe ejecutar el comando __docker compose up --build__ para crear y ejecutar los contenedores de la db y el backend.
+Una vez generada las imagenes tarjetas-ms:1.0.0 y transacciones-ms-ms:1.0.0 se debe volver a la raiz de la carpeta dónde está clonado el repositorio y ejecutar el comando __docker compose up --build__ para crear y ejecutar los contenedores de la db y el backend.
 
 __NT:__ Se debe crear un archivo .env y situarlo al mismo nivel del archivo __docker-compose. yml__, dicho archivo debe contener las variables: 
 
