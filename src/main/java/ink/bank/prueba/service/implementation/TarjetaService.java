@@ -110,8 +110,9 @@ public class TarjetaService implements ITarjetaService {
 
     TarjetaEntity tarjeta = consultarTarjeta(recargarBalanceReq.getCardId());
     tarjeta.setBalance(
-        ConversionUtilidad.toCents(
-            tarjeta.getBalance().add(new BigDecimal(recargarBalanceReq.getBalance()))));
+        tarjeta
+            .getBalance()
+            .add(ConversionUtilidad.toCents(new BigDecimal(recargarBalanceReq.getBalance()))));
     tarjetaRepository.save(tarjeta);
     return new ResultRes(Constantes.Status.OK, "Balance recargado exitosamente.");
   }
