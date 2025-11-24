@@ -79,8 +79,7 @@ public class TransaccionService implements ITransaccionService {
     BigDecimal nuevoBalance =
         tarjeta
             .getBalance()
-            .subtract(
-                ConversionUtilidad.toCents(new BigDecimal(transaccionReq.getPrice()).negate()));
+            .subtract(ConversionUtilidad.toCents(new BigDecimal(transaccionReq.getPrice())));
     if (nuevoBalance.compareTo(BigDecimal.ZERO) < 0) {
       throw new ErrorGeneralException("Fondos insuficientes en la tarjeta.");
     }

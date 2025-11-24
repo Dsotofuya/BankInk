@@ -19,8 +19,7 @@ public class ConversionUtilidad {
    * @return Cantidad en centavos.
    */
   public static BigDecimal toCents(BigDecimal amount) {
-    BigDecimal conversionRate = amount.multiply(new BigDecimal("100"));
-    return amount.multiply(conversionRate);
+    return amount.multiply(new BigDecimal("100"));
   }
 
   /**
